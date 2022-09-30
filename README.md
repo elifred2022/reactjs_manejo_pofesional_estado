@@ -6,4 +6,5 @@
                     } 
                 >Comprobar</button>
 
-                
+# clase 4 Efectos con useEffect
+
