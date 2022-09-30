@@ -1,10 +1,13 @@
 import React from "react";
 
+const SECURITY_CODE = 'paradigma'; //como es una variable constante permanente por convencion se coloca en mayuscula y separada por un guion bajo
+
 function UseState({ name }) {
-    const [error, setError] = React.useState(true); // ESTO ES un ESTADO
+    const [value, setValue] = React.useState(''); //este es un estado dinamico con un stign vacio
+    const [error, setError] = React.useState(false); // ESTO ES un ESTADO
     const [loading, setLoading] = React.useState(false);
 
-  
+    console.log(value);
 
     React.useEffect(() => {
         console.log("emepzando el efecto")
@@ -12,9 +15,16 @@ function UseState({ name }) {
         if (!!loading) {
             setTimeout(() =>{
                 console.log("Haciendo la validacion")
-    
-                setLoading(false);
-    
+                
+                if (value === SECURITY_CODE) {
+                    setLoading(false);
+                } else {
+                    setError(true);
+                    setLoading(false);
+                }
+                
+                
+
                 console.log("Terminando la validacion")
             }, 3000);
         }
@@ -31,11 +41,19 @@ function UseState({ name }) {
             <p>Error: el codigo es incorecto</p>
         )}
 
+        
+
         {loading && ( // && ES TRUE
             <p>Cargando...</p>
         )}
     
-        <input placeholder="Codigo de seguridad"></input>
+        <input 
+        placeholder="Codigo de seguridad"
+        value={value}
+        onChange={(event) => {
+            setValue(event.target.value);
+        }}
+        ></input>
         <button
             onClick={() => setLoading(true)} //! negandolo pasa de tru a flase o viceversa
         >Comprobar</button>

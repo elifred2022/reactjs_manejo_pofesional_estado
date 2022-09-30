@@ -8,3 +8,6 @@
 
 # clase 4 Efectos con useEffect
 
+# clase 5 estados independeites con usestate
+
+
