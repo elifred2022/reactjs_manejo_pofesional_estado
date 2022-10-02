@@ -16,7 +16,6 @@ componentWillUnmount() {
     componentDidUpdate() {
         console.log("Actualizacion");
 
-
-
-
 # clase desde 6 a 8
+
+# clase vista 9

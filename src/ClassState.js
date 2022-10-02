@@ -8,8 +8,8 @@ class ClassState extends React.Component {
         super(props);
 
         this.state = {
-           // value: '',
-            error: true,
+            value: '',
+            error: false,
             loading: false,
         };
     }
