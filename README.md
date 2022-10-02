@@ -8,6 +8,14 @@
 
 # clase 4 Efectos con useEffect
 
-# clase 5 estados independeites con usestate
+# clase 5 componentes ciclo de vida 
+componentWillUnmount() {
+        console.log("componentWillUnmount")
+    }
+
+    componentDidUpdate() {
+        console.log("Actualizacion");
+
+
 
 
