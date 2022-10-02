@@ -19,3 +19,4 @@ componentWillUnmount() {
 
 
 
+# clase desde 6 a 8

@@ -42,8 +42,6 @@ function UseState({ name }) {
             <p>Error: el codigo es incorecto</p>
         )}
 
-        
-
         {loading && ( // && ES TRUE
             <p>Cargando...</p>
         )}
