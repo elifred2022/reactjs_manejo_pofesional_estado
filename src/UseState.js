@@ -90,7 +90,7 @@ function UseState({ name }) {
             </div>
             );
     } else if (!!state.confirmed && !state.deleted) { // !! doble negacion es true y ! una negacion es flaseS
-        return commit (
+        return (
             <React.Fragment>
                     <p>¿esta seguro de eliminar useState?</p>
                     <button 
