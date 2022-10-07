@@ -7,6 +7,8 @@ function UseState({ name }) {
         value: '',
         error: false,
         loading: false,
+        deleted: false,
+        confirmed: false,
     });
 
   //  const [value, setValue] = React.useState(''); //este es un estado dinamico con un stign vacio
@@ -27,6 +29,7 @@ function UseState({ name }) {
                         ...state,
                         error: false,
                         loading: false,
+                        confirmed:true,
                     });
                     //setLoading(false);
                     // setError(false);
@@ -47,44 +50,88 @@ function UseState({ name }) {
         console.log("terminando el efecto")
     }, [state.loading]);
 
-    return (
-    <div>
-        <h2>Eliminar {name}</h2>
-        <p>Escriba el codigo de seguridad</p>
+    if (!state.deleted && !state.confirmed) {
+        return (
+            <div>
+                <h2>Eliminar {name}</h2>
+                <p>Escriba el codigo de seguridad</p>
+        
+                {(state.error && !state.loading) && ( // && ES TRUE
+                    <p>Error: el codigo es incorecto</p>
+                )}
+        
+                {state.loading && ( // && ES TRUE
+                    <p>Cargando...</p>
+                )}
+            
+                <input 
+                placeholder="Codigo de seguridad"
+                value={state.value}
+                onChange={(event) => {
+                    setState({
+                        ...state,
+                        value: event.target.value,
+                    });
+                    // setError(false);
+                    // setValue(event.target.value);
+                }}
+                ></input>
+                <button
+                    onClick={() => { 
+                   // setError(false); // este fue para resolver la recarga de error y se quite el mensaje
+                   // setLoading(true); //! negandolo pasa de tru a flase o viceversa
+        
+                   setState({
+                    ...state,
+                    loading: true,
+                   });
+                } }
+                >Comprobar</button>
+            </div>
+            );
+    } else if (!!state.confirmed && !state.deleted) { // !! doble negacion es true y ! una negacion es flaseS
+        return (
+            <React.Fragment>
+                    <p>¿esta seguro de eliminar useState?</p>
+                    <button 
+                    onClick={() => {
+                        setState({
+                            ...state,
+                            deleted: true,
+                        });
+                    } }
+                    
+                    >Si, Eliminar</button>
+                    <button
+                    onClick={() => {
+                        setState({
+                            ...state,
+                            confimed: false,
+                            value: '',
+                        });
+                    } }
+                    >No</button>
+            </React.Fragment>
+        );
+    } else {
+        return (
+            <React.Fragment>
+                    <p>eliminado con exito</p>
 
-        {(state.error && !state.loading) && ( // && ES TRUE
-            <p>Error: el codigo es incorecto</p>
-        )}
-
-        {state.loading && ( // && ES TRUE
-            <p>Cargando...</p>
-        )}
+                    <button
+                    onClick={() => {
+                        setState({
+                            ...state,
+                            confimed: false,
+                            deleted: false,
+                            value: '',
+                        });
+                    } }
+                    >Volver atras</button>
+            </React.Fragment>
+        )
+    }
     
-        <input 
-        placeholder="Codigo de seguridad"
-        value={state.value}
-        onChange={(event) => {
-            setState({
-                ...state,
-                value: event.target.value,
-            });
-            // setError(false);
-            // setValue(event.target.value);
-        }}
-        ></input>
-        <button
-            onClick={() => { 
-           // setError(false); // este fue para resolver la recarga de error y se quite el mensaje
-           // setLoading(true); //! negandolo pasa de tru a flase o viceversa
-
-           setState({
-            ...state,
-            loading: true,
-           });
-        } }
-        >Comprobar</button>
-    </div>
-    );
 }
 
 export { UseState };
