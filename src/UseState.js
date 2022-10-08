@@ -15,32 +15,66 @@ function UseState({ name }) {
    // const [error, setError] = React.useState(false); // ESTO ES un ESTADO
    // const [loading, setLoading] = React.useState(false);
 
-    console.log(state); // si colocabamos state.value arroajaba eror garafal
+   const onConfirm = () => {
+    setState({
+        ...state,
+        error: false,
+        loading: false,
+        confirmed:true,
+    });
+   };
+
+   const onError =() => {
+    setState({
+        ...state,
+        error: true,
+        loading: false,
+    });
+   };
+
+   const onWrite = (newValue) => {
+    setState({
+        ...state,
+        value: newValue,
+    });
+   }
+
+   const onCheck = () => {
+    setState({
+        ...state,
+        loading: true,
+       });
+   };
+
+   const onDelete = () => {
+    setState({
+        ...state,
+        deleted: true,
+    });
+   };
+
+   const onReset = () => {
+    setState({
+        ...state,
+        confimed: false,
+        deleted: false,
+        value: '',
+    });
+   }
+   // console.log(state); // si colocabamos state.value arroajaba eror garafal
 
     React.useEffect(() => {
-        console.log("emepzando el efecto")
+        console.log("Empezando el efecto")
         
         if (!!state.loading) {
             setTimeout(() =>{
                 console.log("Haciendo la validacion")
                 
                 if (state.value === SECURITY_CODE) {
-                    setState({
-                        ...state,
-                        error: false,
-                        loading: false,
-                        confirmed:true,
-                    });
-                    //setLoading(false);
-                    // setError(false);
+                    onConfirm();
+                    
                 } else {
-                    setState({
-                        ...state,
-                        error: true,
-                        loading: false,
-                    })
-                    //setError(true);
-                    //setLoading(false);
+                   onError();
                 }
                 
                 console.log("Terminando la validacion")
@@ -68,23 +102,13 @@ function UseState({ name }) {
                 placeholder="Codigo de seguridad"
                 value={state.value}
                 onChange={(event) => {
-                    setState({
-                        ...state,
-                        value: event.target.value,
-                    });
-                    // setError(false);
-                    // setValue(event.target.value);
+                    onWrite(event.target.value);
+                   
                 }}
                 ></input>
                 <button
-                    onClick={() => { 
-                   // setError(false); // este fue para resolver la recarga de error y se quite el mensaje
-                   // setLoading(true); //! negandolo pasa de tru a flase o viceversa
-        
-                   setState({
-                    ...state,
-                    loading: true,
-                   });
+                  onClick={() => { 
+                   onCheck();
                 } }
                 >Comprobar</button>
             </div>
@@ -95,22 +119,17 @@ function UseState({ name }) {
                     <p>¿esta seguro de eliminar useState?</p>
                     <button 
                     onClick={() => {
-                        setState({
-                            ...state,
-                            deleted: true,
-                        });
+                        onDelete();
+                        
                     } }
                     
                     >Si, Eliminar</button>
                     <button
                     onClick={() => {
-                        setState({
-                            ...state,
-                            confimed: false,
-                            value: '',
-                        });
+                        onReset();
+                        
                     } }
-                    >No</button>
+                    >No, me arrepenti</button>
             </React.Fragment>
         );
     } else {
@@ -120,12 +139,8 @@ function UseState({ name }) {
 
                     <button
                     onClick={() => {
-                        setState({
-                            ...state,
-                            confimed: false,
-                            deleted: false,
-                            value: '',
-                        });
+                        onReset();
+                        
                     } }
                     >Volver atras</button>
             </React.Fragment>

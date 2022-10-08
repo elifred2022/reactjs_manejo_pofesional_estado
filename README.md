@@ -21,3 +21,6 @@ componentWillUnmount() {
 # clase desde 6 a 8
 
 # clase vista 9
+
+# visto clase 11, se sacaron codgos de los condicionales y se colcoaron funciones q son llamadas desde los codicionales
+todavia no me funciona el boton de no
