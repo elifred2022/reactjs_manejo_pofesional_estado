@@ -55,10 +55,10 @@ function UseState({ name }) {
 
    const onReset = () => {
     setState({
-        ...state,
-        confimed: false,
-        deleted: false,
-        value: '',
+      //  ...state,
+       // confimed: false,
+      //  deleted: false,
+      //  value: '',
     });
    }
    // console.log(state); // si colocabamos state.value arroajaba eror garafal
@@ -89,17 +89,16 @@ function UseState({ name }) {
             <div>
                 <h2>Eliminar {name}</h2>
                 <p>Escriba el codigo de seguridad</p>
-        
-                {(state.error && !state.loading) && ( // && ES TRUE
+                    {(state.error && !state.loading) && ( 
                     <p>Error: el codigo es incorecto</p>
-                )}
-        
-                {state.loading && ( // && ES TRUE
+                    )} 
+         
+                    {state.loading && ( // && ES TRUE
                     <p>Cargando...</p>
-                )}
+                    )}
             
                 <input 
-                placeholder="Codigo de seguridad"
+                placeholder="Aca Codigo de seguridad"
                 value={state.value}
                 onChange={(event) => {
                     onWrite(event.target.value);
@@ -142,7 +141,7 @@ function UseState({ name }) {
                         onReset();
                         
                     } }
-                    >Volver atras</button>
+                    >Recuperar useState</button>
             </React.Fragment>
         )
     }

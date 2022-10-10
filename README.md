@@ -1,5 +1,7 @@
 # password y usuarios
 
+// && ES TRUE
+
 # React.Component vs. useState video 3
 <input placeholder="Codigo de seguridad"></input>
                 <button
@@ -24,3 +26,14 @@ componentWillUnmount() {
 
 # visto clase 11, se sacaron codgos de los condicionales y se colcoaron funciones q son llamadas desde los codicionales
 todavia no me funciona el boton de no
+
+# para poder hacer que funcione le boton de no solo comente os estados; solo q llame el setState original 
+
+const onReset = () => {
+    setState({
+      //  ...state,
+       // confimed: false,
+      //  deleted: false,
+      //  value: '',
+    });
+   }
