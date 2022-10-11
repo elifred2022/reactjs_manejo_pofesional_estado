@@ -37,3 +37,9 @@ const onReset = () => {
       //  value: '',
     });
    }
+
+# clase 12 useReducer
+nos permite declarar todos los posibles estados
+
+const reducer = (state, action) => { esta es una de as formas de crear el reducer
+};
