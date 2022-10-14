@@ -43,3 +43,62 @@ nos permite declarar todos los posibles estados
 
 const reducer = (state, action) => { esta es una de as formas de crear el reducer
 };
+
+
+// reducer con condicional IF
+
+const reducerIf = (state, action) => { 
+    if (action.type === 'ERROR') {
+        return {
+            ...state,
+            error: true,
+            loading: false,
+        };
+    } else if (action.type === 'CHECK') {
+        return {
+            ...state,
+            loading: true,
+        };
+    } else {
+        return {
+            ...initialState,
+        };
+    }
+};
+
+// reducer con switch
+
+const reducerSwitch = (state, action) => {
+    switch (action.type) {
+        case 'ERROR':
+            return {
+                ...state,
+                error: true,
+                loading: false,
+            };
+        // break; no es neceario colocar breack con el return
+        case 'CHECK':
+            return {
+                ...state,
+            loading: true,
+            };
+
+        default:
+            return {
+                ...state,
+            };
+
+
+    }
+}
+
+# clase 14 usando el reducer
+
+  /* const onWrite = (newValue) => {
+    setState({
+        ...state,
+        value: newValue,
+    });
+   } */
+
+   
