@@ -16,6 +16,8 @@ function UseState({ name }) {
    // const [loading, setLoading] = React.useState(false);
 
    const onConfirm = () => {
+  /*  dispatch({ type: actionTypes.confirm });  aca no era la vaina*/
+
     setState({
         ...state,
         error: false,
@@ -25,6 +27,8 @@ function UseState({ name }) {
    };
 
    const onError =() => {
+   /* dispatch({ type: actionTypes.error }); */
+
     setState({
         ...state,
         error: true,
@@ -40,26 +44,32 @@ function UseState({ name }) {
    }
 
    const onCheck = () => {
+ /*   dispatch({ type: actionTypes.check }); */
+
     setState({
         ...state,
         loading: true,
-       });
+       }); 
    };
 
    const onDelete = () => {
+ /*   dispatch({ type: actionTypes.Delete }); */
+    
     setState({
         ...state,
         deleted: true,
-    });
+    }); 
    };
 
    const onReset = () => {
+  /*  dispatch({ type: actionTypes.reset }); */
+
     setState({
       //  ...state,
        // confimed: false,
       //  deleted: false,
       //  value: '',
-    });
+    }); 
    }
    // console.log(state); // si colocabamos state.value arroajaba eror garafal
 
