@@ -1,4 +1,5 @@
 {
+  "homepage": "https://github.com/elifred2022/reactjs_manejo_pofesional_estado.git",
   "name": "reactjs_manejo_pofesional_estado",
   "version": "0.1.0",
   "private": true,
@@ -34,5 +35,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "gh-pages": "^4.0.0"
   }
 }
